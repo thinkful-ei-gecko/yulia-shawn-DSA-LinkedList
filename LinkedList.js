@@ -105,6 +105,42 @@ class LinkedList {
     previousNode.next = new _Node(item, currNode);
     
   }
+  insertAfter(item, key){
+    if (this.head === null) {
+      console.log('Key is not found');
+      return;
+    }
+    let currNode = this.head;
+    let previousNode = this.head;
+    
+    while((currNode !== null) && (key !== currNode.value)) {
+      previousNode = currNode;
+      currNode = currNode.next;
+    }
+    if (currNode === null) {
+      console.log('Key is not found');
+      return;
+    }
+    currNode.next = new _Node(item, currNode.next);
+  }
+
+  insertAt(item, pos){
+    if (this.head === null) {
+      console.log('Key is not found');
+      return;
+    }
+    let currNode = this.head;
+    let previousNode = this.head;
+      
+    for(let currPos = 1; currPos < pos; ++currPos){
+      previousNode = currNode;
+      currNode = currNode.next;
+    }
+
+    //this.insertBefore(item, currNode);
+    //previousNode.next = new _Node(item, previousNode.next);
+    previousNode.next = new _Node(item, currNode);
+  }
 }
 
 function main() {
@@ -115,8 +151,11 @@ function main() {
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
   SLL.insertFirst('Tauhida');
-  SLL.remove('squirell');
+  //SLL.remove('squirell');
   SLL.insertBefore('Athena', 'Boomer');
+  SLL.insertAfter('test', 'Boomer');
+  SLL.insertAt('Kat', 3);
+  SLL.remove('Tauhida');
   console.log('%j', SLL);
 }
 
