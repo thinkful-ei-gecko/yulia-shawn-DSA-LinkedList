@@ -216,7 +216,25 @@ function reverse(lst){
   return lst;
 }
 
-
+function middleOfList(list) {
+  let nodeCounter = 1;
+  if(list.head === null) {
+    return console.log('Empty list');
+  }
+  let currentNode = list.head;
+  while(currentNode.next !== null) {
+    currentNode = currentNode.next;
+    nodeCounter++;
+  }
+  let middle = Math.ceil(nodeCounter/2);
+  let i = 1;
+  currentNode = list.head;
+  while(i < middle) {
+    currentNode = currentNode.next;
+    i++;
+  }
+  return console.log(currentNode.value);
+}
 
 function thridFromLast(lst){
   if(lst.head === null) {
@@ -250,7 +268,7 @@ function main() {
   // SLL.insertAfter('test', 'Boomer');
   // SLL.insertAt('Kat', 3);
   // SLL.remove('Tauhida');
-  //display(SLL);
+  // display(SLL);
   // size(SLL);
   // isEmpty(SLL);
   // findPrevious(SLL, 'Boomer');
@@ -262,6 +280,7 @@ function main() {
 
   //#6
   //thridFromLast(SLL);
+  middleOfList(SLL);
 }
 
-main();
+// main();
