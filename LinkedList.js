@@ -143,6 +143,10 @@ class LinkedList {
   }
 }
 
+function display(list) {
+  console.log(JSON.stringify(list));
+}
+
 function main() {
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
@@ -156,7 +160,7 @@ function main() {
   SLL.insertAfter('test', 'Boomer');
   SLL.insertAt('Kat', 3);
   SLL.remove('Tauhida');
-  console.log('%j', SLL);
+  display(SLL);
 }
 
 main();
