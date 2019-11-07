@@ -147,20 +147,74 @@ function display(list) {
   console.log(JSON.stringify(list));
 }
 
+function size(list) {
+  let nodeCounter = 1;
+  if(list.head === null) {
+    return console.log('Empty list');
+  }
+  let currentNode = list.head;
+  while(currentNode.next !== null) {
+    currentNode = currentNode.next;
+    nodeCounter++;
+  }
+  return console.log(nodeCounter);
+}
+function isEmpty(list) {
+  if(list.head === null) {
+    return console.log('Empty list');
+  }
+  return console.log('List is not empty');
+}
+
+function findPrevious(list, item) {
+  if(list.head === null) {
+    return console.log('Empty list');
+  }
+  let currNode = list.head;
+  let previousNode = list.head;
+  while((currNode !== null) && (item !== currNode.value)) {
+    previousNode = currNode;
+    currNode = currNode.next;
+  }
+  if (currNode === null) {
+    console.log('Key is not found');
+    return;
+  }
+  return console.log(previousNode.value);
+}
+
+function findLast(list) {
+  if(list.head === null) {
+    return console.log('Empty list');
+  }
+  let previousNode = list.head;
+  let currNode = list.head;
+  while(currNode !== null) {
+    previousNode = currNode;
+    currNode = currNode.next;
+  }
+  return console.log(previousNode.value);
+}
+
 function main() {
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
-  SLL.insertLast('Husker');
-  SLL.insertLast('Starbuck');
-  SLL.insertFirst('Tauhida');
+  // SLL.insertLast('Husker');
+  // SLL.insertLast('Starbuck');
+  // SLL.insertFirst('Tauhida');
   //SLL.remove('squirell');
-  SLL.insertBefore('Athena', 'Boomer');
-  SLL.insertAfter('test', 'Boomer');
-  SLL.insertAt('Kat', 3);
-  SLL.remove('Tauhida');
-  display(SLL);
+  // SLL.insertBefore('Athena', 'Boomer');
+  // SLL.insertAfter('test', 'Boomer');
+  // SLL.insertAt('Kat', 3);
+  // SLL.remove('Tauhida');
+  //display(SLL);
+  // size(SLL);
+  // isEmpty(SLL);
+  // findPrevious(SLL, 'Boomer');
+  // findPrevious(SLL, 'Turnip');
+  findLast(SLL);
 }
 
 main();
