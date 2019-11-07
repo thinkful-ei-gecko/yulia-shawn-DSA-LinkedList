@@ -196,13 +196,54 @@ function findLast(list) {
   return console.log(previousNode.value);
 }
 
+
+function reverse(lst){
+  let current =  lst.head; 
+  let reversed = null;
+
+  console.log(JSON.stringify(lst, null, 2));
+
+  while (current !== null){
+    let saveNode = current.next;
+    current.next = reversed;
+    reversed = current;
+    current = saveNode;
+  }
+
+  lst.head = reversed;
+
+  console.log(JSON.stringify(lst, null, 2));
+  return lst;
+}
+
+
+
+function thridFromLast(lst){
+  if(lst.head === null) {
+    return console.log('Empty list');
+  }
+  let beforeBefore;
+  let beforePrevious;
+  let previousNode = lst.head;
+  let currNode = lst.head;
+  while(currNode !== null) {
+    beforeBefore = beforePrevious;
+    beforePrevious = previousNode;
+    previousNode = currNode;
+    currNode = currNode.next;
+
+  }
+  return console.log(beforeBefore.value);
+}
+
+
 function main() {
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
-  // SLL.insertLast('Husker');
-  // SLL.insertLast('Starbuck');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
   // SLL.insertFirst('Tauhida');
   //SLL.remove('squirell');
   // SLL.insertBefore('Athena', 'Boomer');
@@ -214,7 +255,13 @@ function main() {
   // isEmpty(SLL);
   // findPrevious(SLL, 'Boomer');
   // findPrevious(SLL, 'Turnip');
-  findLast(SLL);
+  //findLast(SLL);
+  
+  //#5
+  //reverse(SLL);
+
+  //#6
+  //thridFromLast(SLL);
 }
 
 main();
